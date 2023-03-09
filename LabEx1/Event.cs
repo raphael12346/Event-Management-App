@@ -14,24 +14,39 @@ namespace LabEx1
         public string Location { get; set; }
         public string Description { get; set; }
         public List<Attendee> Attendees { get; set; }
-
-        public Event(string name, DateTime date, string location, string description)
+        public Budget Budget { get; set; }
+        public List<Task> Tasks { get; set; }
+        public int MaxAttendees { get; set; }
+        public Event(string name, DateTime date, string location, string description, int maxAttendees, Budget budget)
         {
             this.Name = name;
             this.Date = date;
             this.Location = location;
             this.Description = description;
+            this.MaxAttendees = maxAttendees;
             this.Attendees = new List<Attendee>();
+            this.Budget = budget;
+            this.Tasks = new List<Task>();
         }
 
         public void AddAttendee(Attendee attendee)
         {
-            Attendees.Add(attendee);
+            this.Attendees.Add(attendee);
         }
 
         public void RemoveAttendee(Attendee attendee) 
         {
-            Attendees.Remove(attendee);
+            this.Attendees.Remove(attendee);
+        }
+
+        public void AddTask(Task task)
+        {
+            this.Tasks.Add(task);
+        }
+
+        public void RemoveTask(Task task)
+        {
+            this.Tasks.Remove(task);
         }
     }
 }
